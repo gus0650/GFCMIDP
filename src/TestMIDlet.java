@@ -1,4 +1,4 @@
-package gfc;
+//package gfc;
 
 import gfc.microedition.lcdui.*;
 
