@@ -1,0 +1,22 @@
+<html>
+<body>
+
+<code>javax.microedition.lcdui.game</code> replacement.<p>
+
+unterschiede der implementierung gegenübder dem original:<p>
+
+1. Sprite.setTransform() ist nicht implementiert<p>
+
+2. pixel-level collision detection ist nicht implementiert<p>
+
+3. Sprite.setFrameSequence() kopiert nicht, wie in der doku angegeben
+das übergebene array in ein internes array, sondern übergibt es nur
+an das interne array (um nicht ein internes array allocieren zu müssen).<p>
+
+Der Unterschied in der Funktionalität ist hierbei, dass Änderungen an dem
+array außerhalb auch die sequenz der frames verändern würden, was wohl
+praktisch niemals vorkommen wird.<p>
+
+
+</body>
+</html>
