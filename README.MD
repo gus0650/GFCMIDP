@@ -14,7 +14,7 @@ to<br>
 gfc.microedition.* <br>
 and you're ready to recompile.
 
-You then need to configure app.properties with the specific parameters for your MIDlet,
+You then need to configure the app.properties file with the specific parameters for your MIDlet,
 and now you are ready to run.
 
 Note: Only a subset of MIDP functionality is implemented -- in particular, that which is
