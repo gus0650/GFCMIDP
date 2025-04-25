@@ -8,13 +8,30 @@ final public class Display extends JPanel implements MouseListener, KeyListener 
 
 	private static final long 	serialVersionUID = 1L;
 	
-	private Displayable 		active_screen;
-	private Displayable 		previous_screen;
+	private Displayable 		current;
+	private Displayable 		previous;
 
 	private PaintThread			painter = new PaintThread();
 	private gfc.microedition.lcdui.Graphics 	gfcg = new Graphics();
 
-	
+	public final static int
+		KEY_UP    	= 38,	//cursor
+		KEY_DOWN   	= 40,
+		KEY_LEFT  	= 37,
+		KEY_RIGHT 	= 39,
+		KEY_CR  	= 10,	//return
+		KEY_SPACE  	= 32,	//space
+		KEY_NUM0 	= 36,	//keypad
+		KEY_NUM1 	= 38,
+		KEY_NUM2 	= 33,
+		KEY_NUM3 	= 34,
+		KEY_NUM4 	= 37,
+		KEY_NUM5 	= 12,
+		KEY_NUM6 	= 39,
+		KEY_NUM7 	= 155,
+		KEY_NUM8 	= 35,
+		KEY_NUM9 	= 40;
+		
 	public Display(java.awt.Frame frame) {
 		setFocusable(true);
 		
@@ -33,47 +50,46 @@ final public class Display extends JPanel implements MouseListener, KeyListener 
 	}
 	
 	public void setCurrent( Displayable s ) {
-		if (s == active_screen) {
+		if (s == current) {
 			System.err.println("ERROR in Display.setCurrent(): this Screen is already the current one");
 			return;
 		}
 		
 		/* deactivate old Screen */
-		if (active_screen != null) {
-			//active_screen.setInactive();
-			active_screen.hideNotify();
+		if (current != null) {
+			current.setInactive();
+			current.hideNotify();
 
-			previous_screen = active_screen;
+			previous = current;
 		}
 
-
 		/* activate new Screen */
-		active_screen = s;
-		//active_screen.setActive(this);
-		active_screen.showNotify();
+		current = s;
+		current.setActive(this);
+		current.showNotify();
 
 		repaint();
 	}
 	
 
 	public void setPrevious() {
-		if (active_screen == null)
+		if (current == null)
 			return;
 		
-		if (previous_screen == null)
+		if (previous == null)
 			return;
 
-		setCurrent(previous_screen);
+		setCurrent(previous);
 	}
 
 
 	public Displayable getCurrent() {
-		return active_screen;
+		return current;
 	}
 
 	public void paint( Graphics g ) {
-		if (active_screen == null) 	return;
-		active_screen.paint( g );
+		if (current == null) 	return;
+		current.paint( g );
 	}
 
 	//------- input events
@@ -87,18 +103,18 @@ final public class Display extends JPanel implements MouseListener, KeyListener 
 	}
 
 	public void keyTyped( KeyEvent ke ) {
-		if (active_screen == null)	return;
-		active_screen.keyEvent(ke.getKeyCode());
+		if (current == null)	return;
+		current.keyEvent(ke.getKeyCode());
 	}
 
 	public void mousePressed( MouseEvent e ) {
-		if (active_screen == null)	return;
-		active_screen.pointerPressed( e.getX(), e.getY() );
+		if (current == null)	return;
+		current.pointerPressed( e.getX(), e.getY() );
 	}
 
 	public void mouseReleased( MouseEvent e ) {
-		if (active_screen == null)	return;
-		active_screen.pointerReleased();
+		if (current == null)	return;
+		current.pointerReleased();
 	}
 
 	public void mouseExited( MouseEvent e ) { 
@@ -110,25 +126,25 @@ final public class Display extends JPanel implements MouseListener, KeyListener 
 	}
 
 	public void mouseMoved( MouseEvent e ) {
-		if (active_screen == null)	return;
-		active_screen.pointerMoved( e.getX(), e.getY() );
+		if (current == null)	return;
+		current.pointerMoved( e.getX(), e.getY() );
 	}
 	
 	public void mouseClicked( MouseEvent e ) {
-		if (active_screen == null)	return;
+		if (current == null)	return;
 		//nop
 	}
 
 	//------notification
 	
 	protected void showNotify() {
-		if (active_screen == null)	return;
-		active_screen.showNotify();
+		if (current == null)	return;
+		current.showNotify();
 	}
 
 	protected void hideNotify() {
-		if (active_screen == null)	return;
-		active_screen.hideNotify();
+		if (current == null)	return;
+		current.hideNotify();
 	}
 	
 	//------painting

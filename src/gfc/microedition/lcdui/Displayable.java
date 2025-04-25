@@ -4,9 +4,11 @@ public abstract class Displayable {
 
 	protected Display display;
 	
-	//private void setActive(Display d) {}
+	void setActive(Display d) {
+		display = d;
+	}
 
-	//private void setInactive() {}
+	void setInactive() {}
 
 	protected void paint( Graphics g ) {}
 	
