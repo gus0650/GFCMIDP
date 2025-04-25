@@ -7,9 +7,9 @@ import java.util.*;
 
 public abstract class MIDlet extends Frame {
 
-	private			Display 	display;
-	private static  MIDlet instance;
-
+	Display display;
+	static MIDlet instance;
+	static Properties properties = new Properties();
 	
 	public MIDlet() {
 		super("UNDEF");
@@ -18,7 +18,7 @@ public abstract class MIDlet extends Frame {
 
 	public static void main( String[] args ) {
 		//read properties from file
-		Properties properties = new Properties();
+		
 		try {
 			//this resource loading mechanism works from inside a JAR (both applet or application context)
 			InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("app.properties");
@@ -129,4 +129,11 @@ public abstract class MIDlet extends Frame {
 	abstract protected void startApp();
 	abstract protected void pauseApp();
 	abstract protected void destroyApp(boolean b);
+
+
+	//--- custom methods
+
+	protected static boolean IsDebug() {
+		return (properties.getProperty("app.debug").equals("true"));
+	}
 }

@@ -4,7 +4,7 @@ GFC
 written by Gustaf Stechmann and Alex Knorr 
 placed in the public domain.
 
-You have a game or app written against the Java ME / MIDP API?
+You have a game written against the Java ME / MIDP API?
 
 With this wrapper library, you can make your app run on regular desktop Java SE!
 
@@ -17,7 +17,9 @@ and you're ready to recompile.
 You then need to configure app.properties with the specific parameters for your MIDlet,
 and now you are ready to run.
 
-Note: Only a subset of MIDP functionality is supported at this time. We may or may not add more funtionality in the future.
+Note: Only a subset of MIDP functionality is implemented -- in particular, that which is
+relevant for games. We assume you want to just paint on a Canvas and not use the any
+of the other UI elements. We may or may not add more funtionality in the future.
 
 This code was written in Visual Studio Code with the Oracle Java extension.
 

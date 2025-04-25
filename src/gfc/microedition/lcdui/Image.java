@@ -23,7 +23,7 @@ public class Image {
 	}
 	
 	public static Image createImage(String filename) throws IOException, IllegalArgumentException {
-		System.out.println("createImage "+filename);
+		if (MIDlet.IsDebug()) System.out.println("Image.createImage "+filename);
 		
 		if ((filename == "") | (filename == null)) new IllegalArgumentException("no filename");
 
@@ -78,7 +78,7 @@ public class Image {
 	            ex.printStackTrace();
 	       }
 
-		/*config:debug:OFF*///System.out.println("Image.load(): w=" + getWidth() + " h=" + getHeight());
+		if (MIDlet.IsDebug()) System.out.println("Image.load(): w=" + i.getWidth() + " h=" + i.getHeight());
 		
 		if ( i.getWidth(null) < 0 ) throw new IOException("ERROR in Image.create(): it seems that the file was not properly loaded - " + filename );
 		

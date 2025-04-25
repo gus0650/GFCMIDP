@@ -21,12 +21,6 @@ public class TestMIDlet extends MIDlet {
 
 		display = Display.getDisplay(this);
 
-		try {                
-			Image i = Image.createImage("res/duke.jpg");
-	    } catch (IOException ex) {
-	    	ex.printStackTrace();
-	    }
-
 		var canvas = new MyCanvas();
 
 		display.setCurrent( canvas );
@@ -62,11 +56,27 @@ public class TestMIDlet extends MIDlet {
 }
 
 class MyCanvas extends Canvas {
+
+	Image img;
+
+	MyCanvas() {
+		//load image
+		try {                
+			img = Image.createImage("res/duke.jpg");
+			System.out.println("image loaded");
+	    } catch (IOException ex) {
+	    	ex.printStackTrace();
+	    }
+	}
+
 	public void paint( Graphics g ) {
+		System.out.println("MyCanvas.paint()");
+
 		//clear
 		g.setColor( 10 );
 		g.fillRect( 0, 0, getWidth(), getHeight() );
 		
-
+		//draw image
+		g.drawImage(img, 10, 5);
 	}
 }
