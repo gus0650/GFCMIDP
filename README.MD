@@ -9,9 +9,9 @@ You have a game written against the Java ME / MIDP API?
 With this wrapper library, you can make your app run on regular desktop Java SE!
 
 Simply change your import statements from<br>
-javax.microedition.*<br>
+javax.microedition.* <br>
 to<br>
-gfc.microedition.*<br>
+gfc.microedition.* <br>
 and you're ready to recompile.
 
 You then need to configure app.properties with the specific parameters for your MIDlet,
