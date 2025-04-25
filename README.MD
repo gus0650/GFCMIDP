@@ -19,7 +19,7 @@ and now you are ready to run.
 
 Note: Only a subset of MIDP functionality is implemented -- in particular, that which is
 relevant for games. We assume you want to just paint on a Canvas and not use any
-of the other UI elements. We may or may not add more funtionality in the future.
+of the other UI elements. We will perhaps add more functionality in the future.
 
 This code was written in Visual Studio Code with the Oracle Java extension.
 
