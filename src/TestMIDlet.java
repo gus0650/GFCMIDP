@@ -1,41 +1,72 @@
-//package gfc;
-
 import gfc.microedition.lcdui.*;
+import java.io.*;
 
 //this midlet showcases the use of gfc.microedition
 
 public class TestMIDlet extends MIDlet {
 
+	Display display;
+	//Timer timer = new Timer();
+
 	public TestMIDlet() {
-		System.out.println("TestMidlet invoked");
-		//
+		System.out.println("TestMidlet created");
 
 		String workingDir = System.getProperty("user.dir");
-		System.out.println("Current working directory: " + workingDir);
+		System.out.println("current working directory: " + workingDir);
 	}
 	
+	@Override
+	public void startup() {
+		System.out.println("TestMidlet started");
+
+		display = Display.getDisplay(this);
+
+		try {                
+			Image i = Image.createImage("res/duke.jpg");
+	    } catch (IOException ex) {
+	    	ex.printStackTrace();
+	    }
+
+		var canvas = new MyCanvas();
+
+		display.setCurrent( canvas );
+
+		//timer.schedule(this, 100.0f);
+	}
 	
 	@Override
 	protected void pauseApp() {
-		// TODO Auto-generated method stub
+		System.out.println("TestMidlet paused");
 
+		//timer.stop();
+
+		notifyPaused();
 	}
 
 	@Override
 	protected void startApp() {
-		// TODO Auto-generated method stub
+		System.out.println("TestMidlet started");
 
+		//timer.run();
 	}
 
 	@Override
 	protected void destroyApp(boolean b) {
-		// TODO Auto-generated method stub
+		System.out.println("TestMidlet destroyed");
 
+		//timer.cancel();
+		
+		notifyDestroyed();
 	}
 
-	@Override
-	public void startup() {
-		// TODO Auto-generated method stub
+}
+
+class MyCanvas extends Canvas {
+	public void paint( Graphics g ) {
+		//clear
+		g.setColor( 10 );
+		g.fillRect( 0, 0, getWidth(), getHeight() );
 		
+
 	}
 }

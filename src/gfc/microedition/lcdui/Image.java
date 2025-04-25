@@ -3,7 +3,6 @@ package gfc.microedition.lcdui;
 //import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.*;
-
 import javax.imageio.ImageIO;
 
 
