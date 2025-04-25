@@ -1,19 +1,28 @@
-GFC README
-==========
-G Stechmann 2013
+GFC
+===
+(c) 2006-2025
+written by Gustaf Stechmann and Alex Knorr 
+placed in the public domain.
 
 You have a game or app written against the Java ME / MIDP API?
 
-With the GFC library, you can make your app run on regular desktop Java SE.
+With this wrapper library, you can make your app run on regular desktop Java SE!
 
-Simply change the import statements to 
-gfc.microedition.*
-instead of
+Simply change your import statements from
 javax.microedition.*
+to
+gfc.microedition.*
 and you're ready to recompile.
 
-Note. Only a subset of MIDP functionality is supported.
+You then need to configure app.properties with the specific parameters for your MIDlet,
+and now you are ready to run.
 
+Note: Only a subset of MIDP functionality is supported at this time. We may or may not add more funtionality in the future.
 
-original MIDP documentation:
+This code was written in Visual Studio Code with the Oracle Java extension.
+
+Original MIDP documentation:
 https://docs.oracle.com/javame/config/cldc/ref-impl/midp2.0/jsr118/index.html
+
+Also thrown in are some utility classes (gfc.util)
+and some stand-alone tools (gfc.tools) that you may find usefull.

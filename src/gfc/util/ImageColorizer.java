@@ -130,7 +130,7 @@ public class ImageColorizer {
 	
 	
 	/**
-	 * Set image back to it´s original palette
+	 * Set image back to itï¿½s original palette
 	 */
 	public final void originalPalette() {
 		
@@ -271,7 +271,7 @@ public class ImageColorizer {
 	
 	
 	/**
-	 * Create an image in it´s current state.
+	 * Create an image in itï¿½s current state.
 	 *
 	 * @return Image - image of current state
 	 */
@@ -363,7 +363,7 @@ public class ImageColorizer {
 			} else {
 				
 				/* no palette found */
-				/*config:debug:ON*/System.err.println("ERROR in ImageColorizer: Image '" + this.png_file + "' doesn´t contain a palette chunk!");
+				/*config:debug:ON*/System.err.println("ERROR in ImageColorizer: Image '" + this.png_file + "' doesnï¿½t contain a palette chunk!");
 			}
 		} 
 		catch (IOException e) {	
@@ -441,7 +441,7 @@ public class ImageColorizer {
 				
 				if( is_chunk ) {
 
-					return( chunk_len ); /* chunk found, pointing to it´s first byte of data */		
+					return( chunk_len ); /* chunk found, pointing to itï¿½s first byte of data */		
 				}
 				
 				/* skip or read data & crc */
@@ -565,7 +565,7 @@ public class ImageColorizer {
 	 * Load palette from another image file.
 	 * The given image file must have the same palette as the current source image.
 	 * 
-	 * TODO: This doesn´t work properbly when mixing colored and grayscaled images.
+	 * TODO: This doesnï¿½t work properbly when mixing colored and grayscaled images.
 	 * 
 	 * @param filename resource name of image file
 	 */
@@ -586,7 +586,7 @@ public class ImageColorizer {
 				
 				if( png_pal_colors > this.png_pal_colors ) {
 					
-					/* palettes don´t match */
+					/* palettes donï¿½t match */
 					/*config:debug:ON*/System.err.println("WARNING in ImageColorizer: Palette of image '" + filename + "' has more colors than '" + this.png_file + "'! " + png_pal_colors + " > " + this.png_pal_colors);
 				}
 				
@@ -597,12 +597,12 @@ public class ImageColorizer {
 			if( png_pal_colors == 0 ) {	
 				
 				/* image has no palette */
-				/*config:debug:ON*/System.err.println("ERROR in ImageColorizer: Image '" + filename + "' doesn´t contain a palette!");
+				/*config:debug:ON*/System.err.println("ERROR in ImageColorizer: Image '" + filename + "' doesnï¿½t contain a palette!");
 				
 			} else			
 			if( png_pal_colors < this.png_pal_colors ) {
 				
-				/* palettes doesn´t match */
+				/* palettes doesnï¿½t match */
 				/*config:debug:ON*/System.err.println("ERROR in ImageColorizer: Palette of image '" + filename + "' has less colors than '"
 				/*config:debug:ON*/	+ this.png_file + "'! " + png_pal_colors + " < " + this.png_pal_colors);
 			}

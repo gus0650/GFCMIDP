@@ -1,0 +1,4 @@
+
+TestMIDlet erweitern
+
+gucken ob in GFC4 evtl neuerer code drin ist
