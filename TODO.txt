@@ -2,6 +2,8 @@ TODO
 
 i could not get VSCode to compile all classes at once, so there may be bugs that i am not aware of
 
+default font is missing and loading is not fully implemented
+
 inputs von AWT müssen verarbeitet & weitergeleitet werden
 hierzu gab es in GFC2.1 diverse "PreProcessed" methoden
 es betrifft insbes
@@ -12,3 +14,5 @@ es betrifft insbes
 TestMIDlet2 und 3 schreiben um die Widgets zu testen
 
 nach TODO im code suchen... und implementieren
+
+javax.microedition.media is not implemented at all
