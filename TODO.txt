@@ -1,7 +1,10 @@
 TODO
 
+i could not get VSCode to compile all classes at once, so there may be bugs that i am not aware of
+
 inputs von AWT müssen verarbeitet & weitergeleitet werden
- hierzu gab es in GFC2.1 diverse "PreProcessed" methoden, es betrifft insbes
+hierzu gab es in GFC2.1 diverse "PreProcessed" methoden
+es betrifft insbes
  InputListener
  TextBox
  ...
