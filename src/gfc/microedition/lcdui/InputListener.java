@@ -2,6 +2,7 @@ package gfc.microedition.lcdui;
 
 
 /**
+ * interface damit Displayables events von AWT empfangen können
  */
 interface InputListener {
 

@@ -25,36 +25,6 @@ public class TextBox extends Screen {
 		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("TextBox()");
 	}
 	
-	
-	boolean keyPressedPreprocess(int keyCode) {
-		boolean intercepted = super.keyPressedPreprocess(keyCode);
-		
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("TextBox.keyPressedPreprocess()");
-
-		if (false) {}
-		else if (keyCode == Canvas.KEY_NUM5 | keyCode == DisplayProperties.KEY_TRIGGER) {
-			CommandListener cl = d_command_listener;
-			if (cl != null) cl.commandAction(OK_COMMAND, this);
-		}
-		else if (keyCode == Canvas.KEY_NUM2 | getGameAction(keyCode) == Canvas.UP ) {
-			tb_textfield.increase();
-		}
-		else if (keyCode == Canvas.KEY_NUM8 | getGameAction(keyCode) == Canvas.DOWN ) {
-			tb_textfield.decrease();
-		}
-		else if (keyCode == Canvas.KEY_NUM4 | getGameAction(keyCode) == Canvas.LEFT ) {
-			tb_textfield.selectPrevious();
-		}
-		else if (keyCode == Canvas.KEY_NUM6 | getGameAction(keyCode) == Canvas.RIGHT ) {
-			tb_textfield.selectNext();
-		}
-		
-		repaint();//TODO -- widgets should repaint internally!
-		
-		return intercepted;
-	}
-
-	
 	public String getString() {
 		return tb_textfield.getString();
 	}

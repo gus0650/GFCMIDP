@@ -27,12 +27,10 @@ public abstract class MIDlet extends Frame {
 			}
 		});
 
-		instance = this;
-
+		//create display
 		display = new Display((Frame)this);
 		display.resize( getWidth(), getHeight() );
 		add(display);
-
 	} 
 
 	public static void main( String[] args ) {

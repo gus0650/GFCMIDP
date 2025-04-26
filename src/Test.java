@@ -1,3 +1,4 @@
+//simple test program to see if your compiler works
 
 public class Test
 {

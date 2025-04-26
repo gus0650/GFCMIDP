@@ -1,5 +1,5 @@
-GFC
-===
+GFC MIDP Wrapper
+================
 (c) 2006-2025<br>
 written by Gustaf Stechmann and Alex Knorr <br>
 placed in the public domain.<br>
@@ -22,13 +22,9 @@ The wrapper re-implements most classes found in MIDP. The implementation is not 
 The Font class uses bitmap fonts. An example font is provided.
 
 This code was written in Visual Studio Code with the Oracle Java extension.
-Load "TestMIDlet" and in VSCode it should run out of the box. (F5)
+Load "TestMIDlet" and it should run out of the box. (F5)
 
 Original MIDP documentation:
 https://docs.oracle.com/javame/config/cldc/ref-impl/midp2.0/jsr118/index.html
 
-Also included for your enjoyment are
-gfc.util - utility classes
-gfc.tools - and some stand-alone tools
-gfc.widgets - high level UI classes
-gfc.graphics - animation, palette manipulation, tilemaps
+This software is 90% complete -- see TODO file for what is mising.

@@ -1,22 +1,11 @@
 TODO
 
---------
-
-abgleich mit GFC 2.1
-
-inputs, PreProcessed -> ?
+inputs von AWT müssen verarbeitet & weitergeleitet werden
+ hierzu gab es in GFC2.1 diverse "PreProcessed" methoden, es betrifft insbes
  InputListener
  TextBox
+ ...
 
------------
+TestMIDlet2 und 3 schreiben um die Widgets zu testen
 
-GFC4 enthält neuere (???) widgets
-
-
-------------
-
-TestMIDlet2 und 3 um die Widgets zu testen
-
-image.create... implementieren
-
-nach TODO im code suchen...
+nach TODO im code suchen... und implementieren
