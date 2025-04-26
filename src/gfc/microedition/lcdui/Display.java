@@ -1,18 +1,21 @@
 package gfc.microedition.lcdui;
 
+import gfc.microedition.midlet.*;
 import java.awt.event.*;
 import javax.swing.JPanel;
 
+//final public class Display extends java.awt.Canvas implements MouseListener, KeyListener {
+final public class Display extends JPanel implements MouseListener, KeyListener  {
+//using JPanel because it has paintImmediately(x,y,w,h);
 
-final public class Display extends JPanel implements MouseListener, KeyListener {
 
-	private static final long 	serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
-	private Displayable 		current;
-	private Displayable 		previous;
+	private Displayable current;
+	private Displayable previous;
 
-	private PaintThread			painter = new PaintThread();
-	private gfc.microedition.lcdui.Graphics 	gfcg = new Graphics();
+	private PaintThread painter = new PaintThread();
+	private gfc.microedition.lcdui.Graphics g = new Graphics();
 
 	public final static int
 		KEY_UP    	= 38,	//cursor
@@ -71,7 +74,6 @@ final public class Display extends JPanel implements MouseListener, KeyListener 
 		repaint();
 	}
 	
-
 	public void setPrevious() {
 		if (current == null)
 			return;
@@ -82,6 +84,15 @@ final public class Display extends JPanel implements MouseListener, KeyListener 
 		setCurrent(previous);
 	}
 
+	protected void showNotify() {
+		if (current == null)	return;
+		current.showNotify();
+	}
+
+	protected void hideNotify() {
+		if (current == null)	return;
+		current.hideNotify();
+	}
 
 	public Displayable getCurrent() {
 		return current;
@@ -92,60 +103,59 @@ final public class Display extends JPanel implements MouseListener, KeyListener 
 		current.paint( g );
 	}
 
-	//------- input events
+
+
+	//------- input events from AWT
 	
+	@Override
 	public void keyPressed( KeyEvent ke ) {
 		//nop
 	}
 
+	@Override
 	public void keyReleased( KeyEvent ke ) {
 		//nop
 	}
 
+	@Override
 	public void keyTyped( KeyEvent ke ) {
 		if (current == null)	return;
 		current.keyEvent(ke.getKeyCode());
 	}
 
+	@Override
 	public void mousePressed( MouseEvent e ) {
 		if (current == null)	return;
 		current.pointerPressed( e.getX(), e.getY() );
 	}
 
+	@Override
 	public void mouseReleased( MouseEvent e ) {
 		if (current == null)	return;
 		current.pointerReleased();
 	}
 
+	@Override
 	public void mouseExited( MouseEvent e ) { 
 		//nop
 	}
 
+	@Override
 	public void mouseEntered( MouseEvent e ) {
 		//nop
 	}
 
+	@Override
+	public void mouseClicked( MouseEvent e ) {
+		//nop
+	}
+
+	//custom add
 	public void mouseMoved( MouseEvent e ) {
 		if (current == null)	return;
 		current.pointerMoved( e.getX(), e.getY() );
 	}
-	
-	public void mouseClicked( MouseEvent e ) {
-		if (current == null)	return;
-		//nop
-	}
 
-	//------notification
-	
-	protected void showNotify() {
-		if (current == null)	return;
-		current.showNotify();
-	}
-
-	protected void hideNotify() {
-		if (current == null)	return;
-		current.hideNotify();
-	}
 	
 	//------painting
 	
@@ -186,7 +196,7 @@ final public class Display extends JPanel implements MouseListener, KeyListener 
 	}
 	
 	public void paint(java.awt.Graphics g) {
-		gfcg.set(g);
-		paint( gfcg );
+		this.g.set(g);
+		paint(this.g );
 	}
 }

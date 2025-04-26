@@ -1,8 +1,21 @@
 <html>
 <body>
 
-<code>javax.microedition.ui</code> replacement.<p>
+<code>javax.microedition.lcdui</code> replacement.<p>
 
+This package contains classes that are API compatible with those that come
+with MIDP.<p>
+
+However, in contrast to the original classes, our implementation 
+offers some additional features:
+<ul>
+	<li>customizable look (fonts, colors...)
+	<li>platform independent (runs in an Applet context, on PocketPC etc.)
+	<li>layout will look 100% identical accross all platforms 
+	(different Handsets, Applet etc.), because BitmapFont is used 
+	instead of system fonts.
+</ul>
+<p>
 
 </body>
 </html>

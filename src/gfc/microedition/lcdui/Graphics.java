@@ -1,18 +1,30 @@
 package gfc.microedition.lcdui;
 
+import gfc.graphics.*;
+
+
 public class Graphics {
 
-	private java.awt.Graphics awtgraphics;
+	java.awt.Graphics awtgraphics;
+
+	public static final int HCENTER = 1;
+	public static final int VCENTER = 2;
+	public static final int LEFT 	= 4;
+	public static final int RIGHT 	= 8;
+	public static final int TOP 	= 16;
+	public static final int BOTTOM 	= 32;
 	
-	private int trans_x, trans_y;
+	int trans_x, trans_y;
 	
+	Font font;
+
 	void dispose() {
 		awtgraphics.dispose();
 		awtgraphics = null;
 	}
 	
 	void set(java.awt.Graphics g) {
-		if (g == null) new NullPointerException();
+		if (g == null) throw new NullPointerException();
 		awtgraphics = g;
 	}
 
@@ -50,7 +62,9 @@ public class Graphics {
 		return awtgraphics.getColor().getRGB();
 	}
 	
-	public void drawImage(Image i, int x, int y) {
+	public void drawImage(Image i, int x, int y, int anchor) {
+		if (anchor != 0) System.out.println("Graphics.drawImage: anchor is not supported"); 
+
 		awtgraphics.drawImage( i.getAWTImage(), x, y, null );
 	}
 	
@@ -109,7 +123,15 @@ public class Graphics {
 		awtgraphics.drawString(s, x, y);
 	}
 
+	// --font
+
+	public Font getFont() {
+		if (font == null) font = Font.getDefaultFont();
+
+		return font;
+	}
+	
 	public void setFont(Font font) {
-		// TODO
+		this.font = font;
 	}
 }

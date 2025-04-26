@@ -1,6 +1,7 @@
 package gfc.microedition.lcdui;
 
 //import java.awt.Toolkit;
+import gfc.microedition.midlet.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.ImageIO;
@@ -23,7 +24,7 @@ public class Image {
 	}
 	
 	public static Image createImage(String filename) throws IOException, IllegalArgumentException {
-		if (MIDlet.IsDebug()) System.out.println("Image.createImage "+filename);
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Image.createImage "+filename);
 		
 		if ((filename == "") | (filename == null)) new IllegalArgumentException("no filename");
 
@@ -78,7 +79,7 @@ public class Image {
 	            ex.printStackTrace();
 	       }
 
-		if (MIDlet.IsDebug()) System.out.println("Image.load(): w=" + i.getWidth() + " h=" + i.getHeight());
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Image.load(): w=" + i.getWidth() + " h=" + i.getHeight());
 		
 		if ( i.getWidth(null) < 0 ) throw new IOException("ERROR in Image.create(): it seems that the file was not properly loaded - " + filename );
 		
@@ -109,6 +110,11 @@ public class Image {
 		//TODO return new Image( Toolkit.getDefaultToolkit().createImage( data, offset, length ) );
 	}
 	
+	static public Image createImage(int w, int h) {
+		return null;
+		//TODO 
+	}
+
 	public void getRGB(int[] rgbData, int offset, int scanlength, int x, int y, int width, int height) {
 		awtimage.getRGB( x, y, width, height, rgbData, offset, scanlength );
 	}

@@ -1,8 +1,8 @@
-package gfc.microedition.lcdui;
+package gfc.graphics;
 
 public class Color {
 
-	java.awt.Color awtcolor;
+	public java.awt.Color awtcolor;
 
 	public Color(int rgb) {
 		awtcolor = new java.awt.Color(rgb);

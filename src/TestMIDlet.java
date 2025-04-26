@@ -1,4 +1,5 @@
 import gfc.microedition.lcdui.*;
+import gfc.microedition.midlet.*;
 import java.io.*;
 
 //this midlet showcases the use of gfc.microedition
@@ -10,20 +11,6 @@ public class TestMIDlet extends MIDlet {
 
 	public TestMIDlet() {
 		System.out.println("TestMidlet created");
-
-		String workingDir = System.getProperty("user.dir");
-		System.out.println("current working directory: " + workingDir);
-	}
-	
-	@Override
-	public void startup() {
-		System.out.println("TestMidlet started");
-
-		display = Display.getDisplay(this);
-
-		var canvas = new MyCanvas();
-
-		display.setCurrent( canvas );
 
 		//timer.schedule(this, 100.0f);
 	}
@@ -41,6 +28,12 @@ public class TestMIDlet extends MIDlet {
 	protected void startApp() {
 		System.out.println("TestMidlet started");
 
+		display = Display.getDisplay(this);
+
+		var canvas = new MyCanvas();
+
+		display.setCurrent( canvas );
+		
 		//timer.run();
 	}
 
@@ -69,6 +62,7 @@ class MyCanvas extends Canvas {
 	    }
 	}
 
+	@Override
 	public void paint( Graphics g ) {
 		System.out.println("MyCanvas.paint()");
 
@@ -77,6 +71,6 @@ class MyCanvas extends Canvas {
 		g.fillRect( 0, 0, getWidth(), getHeight() );
 		
 		//draw image
-		g.drawImage(img, 10, 5);
+		g.drawImage(img, 10, 5, 0);
 	}
 }
