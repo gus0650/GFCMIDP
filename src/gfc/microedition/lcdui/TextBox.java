@@ -1,5 +1,7 @@
 package gfc.microedition.lcdui;
 
+import gfc.microedition.midlet.*;
+
 /**
  * @see javax.microedition.lcdui.TextBox
  * @author Gustaf Stechmann
@@ -8,7 +10,7 @@ package gfc.microedition.lcdui;
 
 public class TextBox extends Screen {
 
-	public static final Command OK_COMMAND = new Command(DisplayProperties.TEXT_OK, Command.OK, 0 );
+	public static final Command OK_COMMAND = new Command(MIDlet.GetAppProperty("TEXT_OK"), Command.OK, 0 );
 
 	private static TextField 	tb_textfield;
 	
@@ -20,18 +22,18 @@ public class TextBox extends Screen {
 		
 		setContent(tb_textfield);
 		
-		/*config:debug:OFF*///System.out.println("TextBox()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("TextBox()");
 	}
 	
 	
 	boolean keyPressedPreprocess(int keyCode) {
 		boolean intercepted = super.keyPressedPreprocess(keyCode);
 		
-		/*config:debug:OFF*///System.out.println("TextBox.keyPressedPreprocess()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("TextBox.keyPressedPreprocess()");
 
 		if (false) {}
 		else if (keyCode == Canvas.KEY_NUM5 | keyCode == DisplayProperties.KEY_TRIGGER) {
-			CommandListener cl = getCommandListener();
+			CommandListener cl = d_command_listener;
 			if (cl != null) cl.commandAction(OK_COMMAND, this);
 		}
 		else if (keyCode == Canvas.KEY_NUM2 | getGameAction(keyCode) == Canvas.UP ) {
@@ -58,7 +60,7 @@ public class TextBox extends Screen {
 	}
 
 	public void setString(String s) {
-		/*config:debug:OFF*///System.out.println("TextBox.setString()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("TextBox.setString()");
 
 		tb_textfield.setString(s);
 		

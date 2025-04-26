@@ -1,5 +1,7 @@
 package gfc.microedition.lcdui;
 
+import gfc.microedition.midlet.*;
+import gfc.graphics.*;
 import gfc.widgets.*;
 import java.util.*;
 
@@ -7,7 +9,6 @@ public abstract class Displayable {
 
 	protected Display display;
 	
-
 //TODO who uses this?
 	void setActive(Display d) {
 		display = d;
@@ -25,23 +26,14 @@ public abstract class Displayable {
 
 //TODO who calls this?
 	void draw(Graphics g){
-		/*config:debug:OFF*///System.out.println("Displayable.draw()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.draw()");
 
 		//make sure there is no translation
 		g.translate( -g.getTranslateX(), -g.getTranslateY() );
 		
-		//set clip to default values -- needed because of Nokia S60 bug!!
-		g.setClip( 
-				0, 
-				0, 
-				DisplayProperties.getScreenWidth(), 
-				DisplayProperties.getScreenHeight() );
-
 		//clear all
-		if ( DisplayProperties.getPassiveColor() != null ) {
-			g.setColor( DisplayProperties.getPassiveColor().getRGB() );
-			g.fillRect( 0, 0, DisplayProperties.getScreenWidth(), DisplayProperties.getScreenHeight() );
-		}
+		g.setColor( Display.getPassiveColor() );
+		g.fillRect( 0, 0, Display.getDisplayWidth(), Display.getDisplayHeight() );
 
 		//translate to underneath title bar
 		if (title != null) g.translate( 0, title.getHeight() );
@@ -52,13 +44,10 @@ public abstract class Displayable {
 		
 			g.clipRect(
 					0, 
-				0, 
+					0, 
 					getWidth(), 
-				paintable_height );
+					paintable_height );
 */	
-		//bg image
-		Image bg = DisplayProperties.SCREEN_BACKGROUND;
-		if (bg != null) g.drawImage(bg, 0, 0, 0);
 
 		//call subclass' paint method
 		paint(g);
@@ -67,13 +56,13 @@ public abstract class Displayable {
 		g.translate( -g.getTranslateX(), -g.getTranslateY() );
 		
 		g.setClip(
-				0, 
-				0, 
-				DisplayProperties.getScreenWidth(), 
-				DisplayProperties.getScreenHeight() );
+			0, 
+			0,
+			Display.getDisplayWidth(), 
+			Display.getDisplayHeight() );
 
 		//paint title
-		if ( (title  != null) ) 		title.paint(g);
+		if ( (title  != null) ) title.paint(g);
 
 		//paint buttons
 		if ( (btn_left  != null) ) 	btn_left.paint(g);
@@ -102,11 +91,11 @@ public abstract class Displayable {
 	public int getHeight() {
 		int h = display.getHeight();
 		
-		if (ticker   != null) 		h -= ticker.getHeight();
+		if (ticker   != null) 			h -= ticker.getHeight();
 		
-		if (title    != null) 		h -= title.getHeight();
+		if (title    != null) 			h -= title.getHeight();
 		
-		if (btn_left != null) 		h -= btn_left.getHeight();
+		if (btn_left != null) 			h -= btn_left.getHeight();
 		else if (btn_right != null) 	h -= btn_right.getHeight();
 
 		return  h;
@@ -127,7 +116,7 @@ public abstract class Displayable {
 	}
 
 	public void setTitle(String s) {
-		/*config:debug:OFF*///System.out.println("Displayable.setTitle()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.setTitle()");
 
 		if (s == null) {
 			title = null;
@@ -135,18 +124,18 @@ public abstract class Displayable {
 		}
 		
 		title = new Label(
-				DisplayProperties.getScreenWidth(), 
-				DisplayProperties.getFont().getHeight(), 
+				Display.getDisplayWidth(), 
+				Display.getGFCFont().getHeight(), 
 				0, 
 				0, 
 				this, 
 				s, 
-				DisplayProperties.getFont(), 
-				DisplayProperties.getActiveColor()
+				Display.getGFCFont(), 
+				Display.getActiveColor()
 			);
 		
-		int hborder = (	DisplayProperties.getScreenWidth() - DisplayProperties.getFont().stringWidth(s) ) / 2;
-		title.setBorderProperties( hborder, DisplayProperties.getDefaultBorderVMargin(), null, null);
+		int hborder = (	Display.getDisplayWidth() - Display.getGFCFont().stringWidth(s) ) / 2;
+		title.setBorderProperties( hborder, Display.getDefaultBorderVMargin(), null, null);
 	}
 
 
@@ -159,7 +148,7 @@ public abstract class Displayable {
 	}
 	
 	public void setTicker(Ticker ticker) {
-		/*config:debug:OFF*///System.out.println("Displayable.setTicker()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.setTicker()");
 
 		if (ticker != null) ticker.stop();
 		
@@ -176,7 +165,7 @@ public abstract class Displayable {
 	CommandListener d_command_listener;
 
 	public void addCommand(Command cmd) {
-		/*config:debug:OFF*///System.out.println("Displayable.addCommand() " + cmd.getLabel());
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.addCommand() " + cmd.getLabel());
 
 		final byte 
 			SIDE_LEFT 	= 0,
@@ -199,11 +188,11 @@ public abstract class Displayable {
 				//no button there -- place cmd on screen
 				btn_left	= new Button(
 						0, 
-						DisplayProperties.getScreenHeight() - DisplayProperties.getFont().getHeight(), 
+						Display.getDisplayHeight() - Display.getGFCFont().getHeight(), 
 						this, 
 						cmd.getLabel(), 
-						DisplayProperties.getFont(), 
-						DisplayProperties.getPassiveColor() 
+						Display.getGFCFont(), 
+						Display.getPassiveColor() 
 					);
 				btn_left.setCommand(cmd);
 			}
@@ -212,10 +201,10 @@ public abstract class Displayable {
 				
 				if (d_menu_left == null) {
 					//create menu
-					d_menu_left = new Menu( DisplayProperties.TEXT_MENU_OPEN, this );
+					d_menu_left = new Menu( MIDlet.GetAppProperty("TEXT_MENU_OPEN"), this );
 					d_menu_left.add(btn_left.getCommand() );
 					
-					btn_left.setString( DisplayProperties.TEXT_MENU_OPEN );
+					btn_left.setString( MIDlet.GetAppProperty("TEXT_MENU_OPEN") );
 				}
 				
 				d_menu_left.add( cmd );
@@ -227,12 +216,12 @@ public abstract class Displayable {
 			if (btn_right == null) {
 				//no button there -- place cmd on screen
 				btn_right	= new Button(
-						DisplayProperties.getScreenWidth() - DisplayProperties.getFont().stringWidth( cmd.getLabel() ),
-						DisplayProperties.getScreenHeight() - DisplayProperties.getFont().getHeight(), 
+						Display.getDisplayWidth() - Display.getGFCFont().stringWidth( cmd.getLabel() ),
+						Display.getDisplayHeight() - Display.getGFCFont().getHeight(), 
 						this, 
 						cmd.getLabel(), 
-						DisplayProperties.getFont(), 
-						DisplayProperties.getPassiveColor() 
+						Display.getGFCFont(),
+						Display.getPassiveColor() 
 					);
 				btn_right.setCommand(cmd);
 			}
@@ -241,10 +230,10 @@ public abstract class Displayable {
 
 				if (d_menu_right == null) {
 					//create menu
-					d_menu_right = new Menu( DisplayProperties.TEXT_MENU_OPEN, this );
+					d_menu_right = new Menu( MIDlet.GetAppProperty("TEXT_MENU_OPEN"), this );
 					d_menu_right.add(btn_right.getCommand() );
 					
-					btn_right.setString( DisplayProperties.TEXT_MENU_OPEN );
+					btn_right.setString( MIDlet.GetAppProperty("TEXT_MENU_OPEN") );
 				}
 				
 				d_menu_right.add( cmd );
@@ -253,13 +242,13 @@ public abstract class Displayable {
 	}
 
 	public void removeCommand(Command cmd) {
-		/*config:debug:OFF*///System.out.println("Displayable.removeCommand()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.removeCommand()");
 
 		d_commands.removeElement(cmd);
 	}
 
 	public void setCommandListener(CommandListener cl) {
-		/*config:debug:OFF*///System.out.println("Displayable.()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.()");
 
 		d_command_listener = cl;
 	}

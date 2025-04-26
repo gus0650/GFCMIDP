@@ -1,5 +1,6 @@
 package gfc.microedition.lcdui;
 
+import gfc.microedition.midlet.*;
 import gfc.widgets.*;
 
 import java.util.Vector;
@@ -26,12 +27,12 @@ public class ChoiceGroup extends Item implements Choice {
 
 		setWidget(cg_panel);
 
-		/*config:debug:OFF*///System.out.println("ChoiceGroup()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup()");
 	}
 
 	
 	void notifyPressed() {
-		/*config:debug:OFF*///System.out.println("ChoiceGroup.notifyPressed()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.notifyPressed()");
 		
 		ChoiceItem current = ((ChoiceItem)cg_choice_items.elementAt( getSelectedIndex() ));
 
@@ -58,21 +59,21 @@ public class ChoiceGroup extends Item implements Choice {
 	
 	
 	void selectPrevious() {
-		/*config:debug:OFF*///System.out.println("ChoiceGroup.selectPrevious()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.selectPrevious()");
 
 		cg_panel.selectPrevious();
 	}
 	
 	
 	void selectNext() {
-		/*config:debug:OFF*///System.out.println("ChoiceGroup.selectNext()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.selectNext()");
 
 		cg_panel.selectNext();
 	}
 	
 	
 	public int append( String stringPart, Image imagePart ) {
-		/*config:debug:OFF*///System.out.println("ChoiceGroup.append()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.append()");
 
 		ChoiceItem ci = new ChoiceItem( 
 				null, 
@@ -98,7 +99,7 @@ public class ChoiceGroup extends Item implements Choice {
 	
 	
 	public void delete( int elementNum ) {
-		/*config:debug:OFF*///System.out.println("ChoiceGroup.delete()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.delete()");
 
 		cg_panel.remove( cg_panel.getWidgetAt(elementNum) );
 		cg_choice_items.removeElementAt(elementNum);	//TODO untested
@@ -122,7 +123,7 @@ public class ChoiceGroup extends Item implements Choice {
 
 
 	public int getSelectedIndex() {
-		/*config:debug:OFF*///System.out.println("ChoiceGroup.getSelectedIndex()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.getSelectedIndex()");
 
 		return cg_panel.getSelectedIndex();
 	}
@@ -137,7 +138,7 @@ public class ChoiceGroup extends Item implements Choice {
 
 
 	public void insert( int elementNum, String stringElement, Image imageElement ) {
-		/*config:debug:OFF*///System.out.println("ChoiceGroup.insert()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.insert()");
 
 		//TODO
 		System.err.println("ChoiceGroup.insert() - method not implemented");
@@ -153,7 +154,7 @@ public class ChoiceGroup extends Item implements Choice {
 
 
 	public void set( int elementNum, String stringElement, Image imageElement ) {
-		/*config:debug:OFF*///System.out.println("ChoiceGroup.set()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.set()");
 
 		//TODO
 		System.err.println("ChoiceGroup.set() - method not implemented");
@@ -161,7 +162,7 @@ public class ChoiceGroup extends Item implements Choice {
 
 
 	public void setSelectedFlags( boolean[] selectedArray ) {
-		/*config:debug:OFF*///System.out.println("ChoiceGroup.setSelectedFlags()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.setSelectedFlags()");
 
 		//TODO
 		System.err.println("ChoiceGroup.setSelectedFlags() - method not implemented");
@@ -169,7 +170,7 @@ public class ChoiceGroup extends Item implements Choice {
 
 
 	public void setSelectedIndex( int elementNum, boolean selected ) {
-		/*config:debug:OFF*///System.out.println("ChoiceGroup.setSelectedIndex()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.setSelectedIndex()");
 
 		if (cg_type == Choice.EXCLUSIVE) deselectAll(); 
 		

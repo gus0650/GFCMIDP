@@ -6,7 +6,6 @@ import java.io.*;
 
 public class TestMIDlet extends MIDlet {
 
-	Display display;
 	//Timer timer = new Timer();
 
 	public TestMIDlet() {
@@ -28,10 +27,9 @@ public class TestMIDlet extends MIDlet {
 	protected void startApp() {
 		System.out.println("TestMidlet started");
 
-		display = Display.getDisplay(this);
-
 		var canvas = new MyCanvas();
 
+		Display display = Display.getDisplay(this);
 		display.setCurrent( canvas );
 		
 		//timer.run();

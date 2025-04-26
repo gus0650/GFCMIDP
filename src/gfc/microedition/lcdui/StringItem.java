@@ -21,8 +21,8 @@ public class StringItem extends Item {
 				0, 
 				getScreen(), 
 				null, 
-				DisplayProperties.getFont(), 
-				DisplayProperties.getPassiveColor() 
+				Display.getGFCFont(), 
+				Display.getPassiveColor() 
 			);
 		
 		setWidget(si_text);
@@ -38,7 +38,7 @@ public class StringItem extends Item {
 	
 	public void setText(String text) {
 		//adjust text to fit screen width
-		String ftext = StringTool.formatJustify( text, si_text.getFont().charsPerLine( DisplayProperties.getScreenWidth() - DisplayProperties.getDefaultBorderHMargin() *2 ) , false );	//TODO all this border business is somewhat inconsistent
+		String ftext = StringTool.formatJustify( text, si_text.getFont().charsPerLine( Display.getDisplayWidth() - Display.getDefaultBorderHMargin() *2 ) , false );	//TODO all this border business is somewhat inconsistent
 		
 		si_text.setString(ftext);
 	}

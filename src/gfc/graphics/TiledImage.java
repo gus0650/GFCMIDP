@@ -1,6 +1,7 @@
 package gfc.graphics;
 
 import gfc.microedition.lcdui.*;
+import gfc.microedition.midlet.MIDlet;
 
 
 /**
@@ -15,7 +16,7 @@ public class TiledImage {
 	protected int tile_height, tile_width, tiles_horiz, tiles_vert, tiles;
 
 	public TiledImage(Image image, int width, int height) {
-		/*config:debug:OFF*///System.out.println("TiledImage()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("TiledImage()");
 
 		this.image = image;
 
@@ -50,7 +51,7 @@ public class TiledImage {
 		int current_tile_x = tile - current_tile_y * tiles_horiz;
 
 		//draw tile
-		g.drawImage(image, x - current_tile_x * tile_width, y - current_tile_y * tile_height);
+		g.drawImage(image, x - current_tile_x * tile_width, y - current_tile_y * tile_height, 0);
 		
 		//restore clip
 		g.setClip( clip_x, clip_y, clip_width, clip_height );
@@ -73,7 +74,7 @@ public class TiledImage {
 	}
 
 	public Image getTileImage(int tile) {
-		/*config:debug:OFF*///System.out.println("TiledImage.getTileImage() " + tile);
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("TiledImage.getTileImage() " + tile);
 		
 		if (tile > tiles) System.err.println("ERROR in TiledImage.getTileImage(): tile ID out of range -- " + tile);
 		

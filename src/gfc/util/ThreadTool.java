@@ -1,10 +1,12 @@
 package gfc.util;
 
+import gfc.microedition.midlet.*;
+
 public class ThreadTool {
 
 	/** 1000 millis = 1 second */
 	public static void sleep(int millis) {
-		/*config:debug:OFF*///System.out.println("GameApp.sleep() " + millis);
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("GameApp.sleep() " + millis);
 
 		try {
 			Thread.sleep(millis);

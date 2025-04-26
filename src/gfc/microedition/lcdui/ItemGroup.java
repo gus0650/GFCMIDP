@@ -1,5 +1,6 @@
 package gfc.microedition.lcdui;
 
+import gfc.microedition.midlet.*;
 import gfc.widgets.*;
 import java.util.Vector;
 
@@ -23,12 +24,12 @@ class ItemGroup extends Item {
 
 		setWidget(ig_panel);
 		
-		/*config:debug:OFF*///System.out.println("ItemGroup()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ItemGroup()");
 	}
 	
 	
 	public int append( Item item ) {
-		/*config:debug:OFF*///System.out.println("ChoiceGroup.append()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.append()");
 
 		ig_panel.append( item.getWidget() );
 

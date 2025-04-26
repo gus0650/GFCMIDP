@@ -1,5 +1,6 @@
 package gfc.microedition.lcdui;
 
+import gfc.graphics.Color;
 import gfc.microedition.midlet.*;
 import java.awt.event.*;
 import javax.swing.JPanel;
@@ -8,14 +9,15 @@ import javax.swing.JPanel;
 final public class Display extends JPanel implements MouseListener, KeyListener  {
 //using JPanel because it has paintImmediately(x,y,w,h);
 
-
-	private static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 	
-	private Displayable current;
-	private Displayable previous;
+	Displayable current;
+	Displayable previous;
 
-	private PaintThread painter = new PaintThread();
-	private gfc.microedition.lcdui.Graphics g = new Graphics();
+	PaintThread painter = new PaintThread();
+	gfc.microedition.lcdui.Graphics g = new Graphics();
+
+	static Font font;
 
 	public final static int
 		KEY_UP    	= 38,	//cursor
@@ -46,6 +48,8 @@ final public class Display extends JPanel implements MouseListener, KeyListener 
 		frame.add(this);
 		
 		painter.start();
+
+		font = null;//TODO initialize font from file!
 	}
 
 	public static Display getDisplay(MIDlet m) {
@@ -102,7 +106,6 @@ final public class Display extends JPanel implements MouseListener, KeyListener 
 		if (current == null) 	return;
 		current.paint( g );
 	}
-
 
 
 	//------- input events from AWT
@@ -199,4 +202,48 @@ final public class Display extends JPanel implements MouseListener, KeyListener 
 		this.g.set(g);
 		paint(this.g );
 	}
+
+
+	//----- custom methods
+
+	static Color acol = new Color(
+		Integer.parseInt(MIDlet.GetAppProperty("COL_PASSIVE")) );
+	public static Color getActiveColor() {
+		return acol;
+	}
+
+	static Color pcol = new Color(
+		Integer.parseInt(MIDlet.GetAppProperty("COL_ACTIVE")) );
+	public static Color getPassiveColor() {
+		return pcol;
+	}
+
+	public static Font getGFCFont() {
+		return font;
+	}
+
+	public static int getDisplayWidth() {
+		return WIDTH;		
+	}
+
+	public static int getDisplayHeight() {
+		return HEIGHT;
+	}
+
+	public static int getDefaultBorderVMargin() {
+		return Integer.parseInt(MIDlet.GetAppProperty("BORDERV"));
+	}
+
+	public static int getDefaultBorderHMargin() {
+		return Integer.parseInt(MIDlet.GetAppProperty("BORDERH"));
+	}
+
+	public static Image getDefaultMenuitemInactive(){
+		return null; //TODO
+	}
+
+	public static Image getDefaultMenuitemActive(){
+		return null; //TODO
+	}
+
 }

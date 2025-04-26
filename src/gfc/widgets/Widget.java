@@ -2,6 +2,7 @@ package gfc.widgets;
 
 import gfc.graphics.*;
 import gfc.microedition.lcdui.*;
+import gfc.microedition.midlet.MIDlet;
 
 /**
  * A Widget
@@ -52,14 +53,14 @@ abstract public class Widget {
 		this.y = y;
 		this.displayable = displayable;
 
-		/*config:debug:OFF*///System.out.println("Widget()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget()");
 	}
 	
 	
     public Widget(int width, int height, Displayable displayable) {
         this(width, height, 0, 0, displayable);
         
-		/*config:debug:OFF*///System.out.println("Widget()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget()");
     }
 
     
@@ -70,7 +71,7 @@ abstract public class Widget {
 	 * Paint this Widget.
 	 */
 	public void paint(Graphics g) {
-		/*config:debug:OFF*///System.out.println("Widget.paint()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.paint()");
 
 		//store clip
 		int clip_x  	= g.getClipX();
@@ -99,7 +100,7 @@ abstract public class Widget {
 		if ( selected   && border_active != null )		tc = border_active;
 		
 		if (tc != null) {
-			g.setColor( tc.getRGB() );
+			g.setColor( tc );
 			if (border_horz > 0) {
 				g.fillRect( 0, 0, 						getWidth(), border_horz );
 				g.fillRect( 0, height + border_horz, 	getWidth(), border_horz );
@@ -123,7 +124,7 @@ abstract public class Widget {
 
 
 	final public void setAlignment( int flags ) {
-		/*config:debug:OFF*///System.out.println("Widget.setAlignment()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setAlignment()");
 
 		alignment	= flags;
 
@@ -138,7 +139,7 @@ abstract public class Widget {
 
 	
 	final public void setBorderProperties( int hMargin, int vMargin, Color activeColor, Color inactiveColor ) {
-		/*config:debug:OFF*///System.out.println("Widget.setBorderProperties()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setBorderProperties()");
 
 		border_horz 	= hMargin;
 		border_vert 	= vMargin;
@@ -167,7 +168,7 @@ abstract public class Widget {
 	 * @param backgroundColor - background color. If it is null, the background is transparent
 	 */
 	final public void setBGColor( Color backgroundColor ) {
-		/*config:debug:OFF*///System.out.println("Widget.setBGColor()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setBGColor()");
 
 		bg_color 		= backgroundColor;
 		repaint();
@@ -180,7 +181,7 @@ abstract public class Widget {
 	
 	
 	final public void setBGImage( Image img ) {
-		/*config:debug:OFF*///System.out.println("Widget.setBGImage()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setBGImage()");
 
 		bg_image 		= img;
 		repaint();
@@ -193,7 +194,7 @@ abstract public class Widget {
 
 	
 	public void setSelected(boolean flag) {
-		/*config:debug:OFF*///System.out.println("Widget.setSelected()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setSelected()");
 
 		if (!isSelectable()) return;
 
@@ -216,14 +217,14 @@ abstract public class Widget {
 
 	
 	public void setWidgetSelectListener(WidgetSelectListener listener) {
-		/*config:debug:OFF*///System.out.println("Widget.setWidgetSelectListener()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setWidgetSelectListener()");
 
 		wsl = listener;
 	}
 
 	
 	protected void setSelectable(boolean flag) {
-		/*config:debug:OFF*///System.out.println("Widget.setSelectable()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setSelectable()");
 
 		selectable = flag;
 	}
@@ -235,7 +236,7 @@ abstract public class Widget {
 
 	
 	public void setEnabled(boolean flag) {
-		/*config:debug:OFF*///System.out.println("Widget.setEnabled()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setEnabled()");
 
 		enabled = flag;
 	}
@@ -252,7 +253,7 @@ abstract public class Widget {
 
 
 	final public void setVisible(boolean flag) {
-		/*config:debug:OFF*///System.out.println("Widget.setVisible()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setVisible()");
 
 		if( flag == visible ) return;
 	
@@ -268,14 +269,14 @@ abstract public class Widget {
 	
 	
 	void setPanel( Panel panel ) {
-		/*config:debug:OFF*///System.out.println("Widget.setPanel()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setPanel()");
 
 		this.panel = panel;
 	}
 
 	
 	public void setDisplayable(Displayable d) {
-		/*config:debug:OFF*///System.out.println("Widget.setDisplayable()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setDisplayable()");
 
 		displayable = d;
 	}
@@ -287,7 +288,7 @@ abstract public class Widget {
 
 	
 	public void setCommand(Command c) {
-		/*config:debug:OFF*///System.out.println("Widget.setCommand()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setCommand()");
 
 		command = c;
 	}
@@ -299,7 +300,7 @@ abstract public class Widget {
 	
 
 	public void triggerCommand(CommandListener cl, Displayable d) {
-		/*config:debug:OFF*///System.out.println("Widget.triggerCommand()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.triggerCommand()");
 
 		cl.commandAction(command, d);
 	}
@@ -362,14 +363,14 @@ abstract public class Widget {
 
 
 	final public void move(int dx, int dy) {
-		/*config:debug:OFF*///System.out.println("Widget.move()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.move()");
 
 		setPosition( x + dx, y + dy );
 	}
 
 	
 	public void setX(int x) {
-		/*config:debug:OFF*///System.out.println("Widget.setX()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setX()");
 
 		this.x 	= x;
 		repaint();
@@ -377,7 +378,7 @@ abstract public class Widget {
 
 	
 	public void setY(int y) {
-		/*config:debug:OFF*///System.out.println("Widget.setY()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setY()");
 
 		this.y 	= y;
 		repaint();
@@ -390,7 +391,7 @@ abstract public class Widget {
 	 * @param y - y coordinate
 	 */
 	final public void setPosition( int x, int y ) {
-		/*config:debug:OFF*///System.out.println("Widget.setPosition()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setPosition()");
 
 		this.x 	= x;
 		this.y 	= y;
@@ -399,7 +400,7 @@ abstract public class Widget {
 	
 
 	public void setContentWidth(int w) {
-		/*config:debug:OFF*///System.out.println("Widget.setContentWidth()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setContentWidth()");
 
         width = w;
         
@@ -409,7 +410,7 @@ abstract public class Widget {
 
 	
 	public void setContentHeight(int h) {
-		/*config:debug:OFF*///System.out.println("Widget.setContentHeight()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setContentHeight()");
 
 		height = h;
 		
@@ -442,7 +443,7 @@ abstract public class Widget {
 	 * (this method processes faster than setting width & height separately)
 	 */
     public void setDimensions(int w, int h) {
-		/*config:debug:OFF*///System.out.println("Widget.setDimensions()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setDimensions()");
 
         width 	= w;
         height 	= h;
@@ -453,7 +454,7 @@ abstract public class Widget {
     
 	
 	public void setBounds(int x, int y, int width, int height) {
-		/*config:debug:OFF*///System.out.println("Widget.setBounds()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setBounds()");
 
 		this.x = x;
 		this.y = y;
@@ -486,6 +487,42 @@ abstract public class Widget {
 	public void repaint() {
         displayable.repaint();
 	}
+
+	//TODO
+	//Display uses JPanel paintImmediately(x,y,w,h); -> opportunity for optimization in Widget.repaint!
+	/*
+	public void repaint() {
+		if (displayable == null) return;
+		
+		//make sure painting area is not < 0 -- must do this because of a bug in Nokia S40 V1!
+        int x = getAbsX();
+        int y = getAbsY();
+        int w = getWidth();
+        int h = getHeight();
+
+        if (x < 0) {
+            w += x;
+            x = 0;
+        }
+        if (y < 0) {
+            h += y;
+            y = 0;
+        }
+
+        t = (x + w) - displayable.getWidth();
+        if (t > 0) {
+            w -= t;
+        }
+        
+        t = (y + h) - displayable.getHeight();
+        if (t > 0) {
+            h -= t;
+        }
+
+		//must cast to Canvas, because in original lcdui only Canvas has repaint() method!
+        ((Canvas) displayable).repaint(x, y, w, h);
+	}
+	*/
 	
     @Override
 	public String toString() {
@@ -516,7 +553,7 @@ abstract public class Widget {
      * Subclasses may override to respond to such an event.
      */
     protected void notifyDeselected() {
-		/*config:debug:OFF*///System.out.println("Widget.notifyDeselected()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.notifyDeselected()");
     }
     
     /**
@@ -525,6 +562,6 @@ abstract public class Widget {
      * Subclasses may override to respond to such an event.
      */
     protected void notifySelected() {
-		/*config:debug:OFF*///System.out.println("Widget.notifySelected()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.notifySelected()");
     }
 }

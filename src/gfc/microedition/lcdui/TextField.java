@@ -1,5 +1,6 @@
 package gfc.microedition.lcdui;
 
+import gfc.microedition.midlet.*;
 import gfc.widgets.*;
 
 

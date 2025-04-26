@@ -1,5 +1,7 @@
 package gfc.microedition.lcdui;
 
+import gfc.microedition.midlet.*;
+
 /**
  * @see javax.microedition.lcdui.List
  * @author Gustaf Stechmann
@@ -30,7 +32,7 @@ public class List extends Screen implements Choice {
 
 		if (l_type == Choice.IMPLICIT) addCommand(SELECT_COMMAND);
 
-		/*config:debug:OFF*///System.out.println("List()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List()");
 	}
 
 
@@ -45,7 +47,7 @@ public class List extends Screen implements Choice {
 
 		if (l_type == Choice.IMPLICIT) addCommand(SELECT_COMMAND);
 		
-		/*config:debug:OFF*///System.out.println("List()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List()");
 	}
 
 	
@@ -53,7 +55,7 @@ public class List extends Screen implements Choice {
 
 	@Override
 	public int append( String stringPart, Image imagePart ) {
-		/*config:debug:OFF*///System.out.println("List.append()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List.append()");
 		
 		l_choicegroup.append( stringPart, imagePart );
 		
@@ -64,7 +66,7 @@ public class List extends Screen implements Choice {
 
 	@Override
 	public void insert( int elementNum, String stringPart, Image imagePart ) {
-		/*config:debug:OFF*///System.out.println("List.insert()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List.insert()");
 		
 		l_choicegroup.insert(elementNum, stringPart, imagePart);
 		
@@ -73,7 +75,7 @@ public class List extends Screen implements Choice {
 
 	@Override
 	public void delete( int elementNum ) {
-		/*config:debug:OFF*///System.out.println("List.delete()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List.delete()");
 		
 		l_choicegroup.delete(elementNum);
 		
@@ -133,7 +135,7 @@ public class List extends Screen implements Choice {
 	// ----- methods inherited from Displayable
 	
 	boolean keyPressedPreprocess(int keyCode) {
-		/*config:debug:OFF*///System.out.println("List.keyPressedPreprocess()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List.keyPressedPreprocess()");
 
 //TODO
 		boolean intercepted = false;//super.keyPressedPreprocess(keyCode);

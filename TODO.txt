@@ -2,17 +2,11 @@ TODO
 
 --------
 
-GFC 2.1
+abgleich mit GFC 2.1
 
-PreProcessed -> ?
-
-Display uses JPanel paintImmediately(x,y,w,h); -> bring back optimizations in Widget.repaint!
-
-DeviceSettings -> midlet.properties
-
-MIDlet getInstance() nötig?
-
-Color hat funktionalität verloren beim umbau
+inputs, PreProcessed -> ?
+ InputListener
+ TextBox
 
 -----------
 
@@ -21,12 +15,8 @@ GFC4 enthält neuere (???) widgets
 
 ------------
 
-TestMIDlet erweitern
-
-
-debug messages updaten
+TestMIDlet2 und 3 um die Widgets zu testen
 
 image.create... implementieren
-
 
 nach TODO im code suchen...

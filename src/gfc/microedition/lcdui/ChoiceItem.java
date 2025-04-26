@@ -1,5 +1,6 @@
 package gfc.microedition.lcdui;
 
+import gfc.microedition.midlet.MIDlet;
 import gfc.widgets.*;
 
 
@@ -30,15 +31,15 @@ class ChoiceItem extends Item implements WidgetSelectListener {
 	ChoiceItem(String label, Displayable d, String text, int listType) {
 		super(label);
 
-		ci_inactive = DisplayProperties.getDefaultMenuitemInactive();
-		ci_active 	= DisplayProperties.getDefaultMenuitemActive();
+		ci_inactive = Display.getDefaultMenuitemInactive();
+		ci_active 	= Display.getDefaultMenuitemActive();
 
 		if (ci_inactive.getWidth()  != ci_active.getWidth()) 	System.err.println("WARNING in ChoiceItem(): images are not of same width");
 		if (ci_inactive.getHeight() != ci_active.getHeight()) 	System.err.println("WARNING in ChoiceItem(): images are not of same height");
 
 		ci_string 	= text;
 		
-		ci_text = new Label( ci_active.getWidth() / 2, ci_inactive.getHeight() / 2, d, text, DisplayProperties.getFont(), null );
+		ci_text = new Label( ci_active.getWidth() / 2, ci_inactive.getHeight() / 2, d, text, Display.getGFCFont(), null );
         ci_text.setAlignment(Graphics.HCENTER | Graphics.VCENTER);
 
 		if (listType < Choice.EXCLUSIVE | listType > Choice.MULTIPLE) System.err.println("ChoiceItem(): illegal argument" + listType);
@@ -55,7 +56,7 @@ class ChoiceItem extends Item implements WidgetSelectListener {
         
         setWidget(ci_panel);
 
-		/*config:debug:OFF*///System.out.println("ChoiceItem()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceItem()");
 	}
 	
 	
@@ -65,7 +66,7 @@ class ChoiceItem extends Item implements WidgetSelectListener {
 
 
 	void setChecked(boolean flag) {
-		/*config:debug:OFF*///System.out.println("ChoiceItem.setChecked() " + flag);
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceItem.setChecked() " + flag);
 		
 		if (flag) {
 			if (ci_type == Choice.EXCLUSIVE)	ci_text.setString(ON 		+" "+ 	ci_string);
@@ -79,7 +80,7 @@ class ChoiceItem extends Item implements WidgetSelectListener {
 	
 	
 	public void widgetStateChanged(Widget w) {
-		/*config:debug:OFF*///System.out.println("ChoiceItem.widgetStateChanged()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceItem.widgetStateChanged()");
 
 		if (w.isSelected()) ci_icon.setImage(ci_active);
 		else ci_icon.setImage(ci_inactive);

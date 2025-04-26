@@ -1,5 +1,7 @@
 package gfc.microedition.lcdui;
 
+import gfc.microedition.midlet.*;
+
 import java.util.Vector;
 
 //used by GameCanvas
@@ -26,7 +28,7 @@ public class Menu extends List implements CommandListener {
 	
 	
 	public void commandAction( Command cmd, Displayable d ) {
-		/*config:debug:OFF*///System.out.println("Menu.commandAction() " + cmd.getLabel());
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Menu.commandAction() " + cmd.getLabel());
 
 		display.setCurrent(m_parent);
 
@@ -45,7 +47,7 @@ public class Menu extends List implements CommandListener {
 	
 	
 	void add(Command c) {
-		/*config:debug:OFF*///System.out.println("Menu.add() " + c.getLabel());
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Menu.add() " + c.getLabel());
 		
 		append(c.getLabel(), null);
 		

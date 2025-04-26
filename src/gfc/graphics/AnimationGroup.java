@@ -1,7 +1,7 @@
 package gfc.graphics;
 
-/*config:lcdui:OFF*///import javax.microedition.lcdui.Graphics;
-/*config:gfcui:ON*/import gfc.ui.Graphics;
+import gfc.microedition.lcdui.Graphics;
+import gfc.microedition.midlet.MIDlet;
 
 import java.util.*;
 
@@ -28,7 +28,7 @@ public class AnimationGroup implements Animation {
 	
 	
 	public void toFirstFrame() {
-		/*config:debug:OFF*///System.out.println("AnimationGroup.toFirstFrame()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("AnimationGroup.toFirstFrame()");
 
 		more = false;
 
@@ -45,7 +45,7 @@ public class AnimationGroup implements Animation {
 	
 	
 	public void toNextFrame() {
-		/*config:debug:OFF*///System.out.println("AnimationGroup.toNextFrame()");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("AnimationGroup.toNextFrame()");
 
 		more = false;
 

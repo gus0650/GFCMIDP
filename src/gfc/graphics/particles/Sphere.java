@@ -2,6 +2,7 @@ package gfc.graphics.particles;
 
 import gfc.graphics.*;
 import gfc.microedition.lcdui.*;
+import gfc.microedition.midlet.MIDlet;
 
 
 public class Sphere implements Animation {
@@ -30,7 +31,7 @@ public class Sphere implements Animation {
 
 
 	public void toFirstFrame() {
-		/*config:debug:OFF*///System.err.println("WARNING Sphere.toFirstFrame(): Method not implemented");
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.err.println("WARNING Sphere.toFirstFrame(): Method not implemented");
 		
 		//TODO: remember setting & restore now
 	}

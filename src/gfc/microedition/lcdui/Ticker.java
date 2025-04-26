@@ -1,5 +1,6 @@
 package gfc.microedition.lcdui;
 
+import gfc.microedition.midlet.*;
 import gfc.widgets.*;
 import gfc.util.Timer;
 import gfc.util.TimerTask;
@@ -12,15 +13,15 @@ import gfc.util.TimerTask;
  */
 public class Ticker implements Runnable {
 
-	private Scroller 	t_scroller;
+	private Scroller 	scroller;
 
     private TimerTask 	timerTask 	= new TimerTask(this);
-    private Timer timer 			= new Timer();
+    private Timer 		timer 		= new Timer();
 
 
 	public Ticker( String text ) {
 		
-		t_scroller = new Scroller(
+		scroller = new Scroller(
 				DisplayProperties.getScreenWidth(),
 				DisplayProperties.getScreenHeight(),
 				0,
@@ -37,12 +38,12 @@ public class Ticker implements Runnable {
 
 
 	public String getString() {
-		return t_scroller.getString();
+		return scroller.getString();
 	}
 
 
 	public void setString( String text ) {
-		t_scroller.setString(text);
+		scroller.setString(text);
 	}
 
 	
@@ -64,11 +65,11 @@ public class Ticker implements Runnable {
 	
     
 	public void run() {
-		t_scroller.scroll();
+		scroller.scroll();
 	}
 
 	
 	int getHeight() {
-		return t_scroller.getHeight();
+		return scroller.getHeight();
 	}
 }

@@ -1,7 +1,8 @@
 package gfc.microedition.midlet;
 
 import gfc.microedition.lcdui.*;
-import java.awt.Frame;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 
@@ -9,7 +10,6 @@ import java.util.*;
 public abstract class MIDlet extends Frame {
 
 	Display display;
-	static MIDlet instance;
 	static Properties properties = new Properties();
 	
 	public MIDlet() {
@@ -19,6 +19,13 @@ public abstract class MIDlet extends Frame {
 
 		String workingDir = System.getProperty("user.dir");
 		System.out.println("current working directory: " + workingDir);
+
+		//close window when X button is clicked
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				dispose();
+			}
+		});
 
 		instance = this;
 
@@ -75,10 +82,6 @@ public abstract class MIDlet extends Frame {
 	//TODO call resumeRequest() ..?
 
 	//--- custom methods
-
-	static public MIDlet getInstance() {
-		return instance;
-	}
 
 	public Display getDisplay() {
 		return display;

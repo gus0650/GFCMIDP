@@ -2,6 +2,7 @@ package gfc.widgets;
 
 import gfc.microedition.lcdui.*;
 import gfc.graphics.*;
+import gfc.microedition.midlet.MIDlet;
 
 
 
@@ -34,7 +35,7 @@ abstract class Gauge extends Widget {
 	
 	
 	public void setValue(int v) {
-		/*config:debug:OFF*///System.out.println("Gauge.setValue() " +v);
+		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Gauge.setValue() " +v);
 		
 		value = v;
 		
