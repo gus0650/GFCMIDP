@@ -19,7 +19,9 @@ and now you are ready to run.
 
 The wrapper re-implements most classes found in MIDP. The implementation is not complete, but should be sufficient for most games.
 
-The Font class uses bitmap fonts. An example font is provided.
+The Font class uses bitmap fonts.
+
+Fullscreen mode is theoretically supported (through AWT), although does not work on most modern PCs.
 
 This code was written in Visual Studio Code with the Oracle Java extension.
 Load "TestMIDlet" and it should run out of the box. (F5)
