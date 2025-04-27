@@ -28,7 +28,7 @@ public class AnimationGroup implements Animation {
 	
 	
 	public void toFirstFrame() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("AnimationGroup.toFirstFrame()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("AnimationGroup.toFirstFrame()");
 
 		more = false;
 
@@ -45,7 +45,7 @@ public class AnimationGroup implements Animation {
 	
 	
 	public void toNextFrame() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("AnimationGroup.toNextFrame()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("AnimationGroup.toNextFrame()");
 
 		more = false;
 

@@ -32,7 +32,7 @@ public class List extends Screen implements Choice {
 
 		if (l_type == Choice.IMPLICIT) addCommand(SELECT_COMMAND);
 
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("List()");
 	}
 
 
@@ -47,7 +47,7 @@ public class List extends Screen implements Choice {
 
 		if (l_type == Choice.IMPLICIT) addCommand(SELECT_COMMAND);
 		
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("List()");
 	}
 
 	
@@ -55,7 +55,7 @@ public class List extends Screen implements Choice {
 
 	@Override
 	public int append( String stringPart, Image imagePart ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List.append()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("List.append()");
 		
 		l_choicegroup.append( stringPart, imagePart );
 		
@@ -66,7 +66,7 @@ public class List extends Screen implements Choice {
 
 	@Override
 	public void insert( int elementNum, String stringPart, Image imagePart ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List.insert()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("List.insert()");
 		
 		l_choicegroup.insert(elementNum, stringPart, imagePart);
 		
@@ -75,7 +75,7 @@ public class List extends Screen implements Choice {
 
 	@Override
 	public void delete( int elementNum ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List.delete()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("List.delete()");
 		
 		l_choicegroup.delete(elementNum);
 		
@@ -135,7 +135,7 @@ public class List extends Screen implements Choice {
 	// ----- methods inherited from Displayable
 	
 	boolean keyPressedPreprocess(int keyCode) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("List.keyPressedPreprocess()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("List.keyPressedPreprocess()");
 
 //TODO
 		boolean intercepted = false;//super.keyPressedPreprocess(keyCode);

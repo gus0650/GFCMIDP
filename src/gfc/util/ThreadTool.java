@@ -6,7 +6,7 @@ public class ThreadTool {
 
 	/** 1000 millis = 1 second */
 	public static void sleep(int millis) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("GameApp.sleep() " + millis);
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("GameApp.sleep() " + millis);
 
 		try {
 			Thread.sleep(millis);

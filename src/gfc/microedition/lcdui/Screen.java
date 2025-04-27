@@ -9,14 +9,14 @@ abstract public class Screen extends Canvas {
 	protected Widget 	widget;
 	
 	Screen(String title) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Screen()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Screen()");
 
 		setTitle(title);
 	}
 	
 
 	void setContent( Item item ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Screen.setContent()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Screen.setContent()");
 
 		widget = item.getWidget();
 
@@ -27,7 +27,7 @@ abstract public class Screen extends Canvas {
 	
 	
 	public void paint(Graphics g) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Screen.paint()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Screen.paint()");
 		
 		//margins
 		g.clipRect(
@@ -43,7 +43,7 @@ abstract public class Screen extends Canvas {
 
 
 	void posDown() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Screen.posDown()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Screen.posDown()");
 
 		int visible = widget.getHeight() + (widget.getY() - (getPaintableAreaOffsetY() + Display.getDefaultBorderVMargin()) );
 		
@@ -63,7 +63,7 @@ abstract public class Screen extends Canvas {
 
 
 	void posHome() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Screen.posHome()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Screen.posHome()");
 
 		//center horz'y
 		int cx = Display.getDisplayWidth()/2  - widget.getWidth()/2;

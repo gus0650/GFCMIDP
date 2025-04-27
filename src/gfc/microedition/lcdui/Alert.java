@@ -1,5 +1,6 @@
 package gfc.microedition.lcdui;
 
+import gfc.microedition.midlet.MIDlet;
 
 
 /**
@@ -15,8 +16,8 @@ public class Alert extends Screen implements CommandListener {
 	private Image					a_image;
 	private StringItem				a_stringitem;
 	
-	public static final Command 	DISMISS_COMMAND 	= new Command(DisplayProperties.TEXT_DISMISS, 	Command.CANCEL, 0 );
-	private static final Command	MORE_COMMAND		= new Command(DisplayProperties.TEXT_MORE, 		Command.OK, 0 );
+	public static final Command 	DISMISS_COMMAND 	= new Command(MIDlet.GetAppProperty("TEXT_DISMISS"), 	Command.CANCEL, 0 );
+	private static final Command	MORE_COMMAND		= new Command(MIDlet.GetAppProperty("TEXT_MORE"), 		Command.OK, 0 );
 	
 
 	public Alert(String title) {

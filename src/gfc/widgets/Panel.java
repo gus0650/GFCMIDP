@@ -33,7 +33,7 @@ public class Panel extends Widget {
 
 		p_dynamic 		= false;
 
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel() - fixed size");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel() - fixed size");
 	}
 	
 	
@@ -47,7 +47,7 @@ public class Panel extends Widget {
 		
 		p_dynamic 		= true;
 		
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel() - dynamic size");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel() - dynamic size");
 	}
 
 
@@ -55,7 +55,7 @@ public class Panel extends Widget {
 	 * Appends a Widget to this Panel.
 	 */
 	public void append( Widget w ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.append()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.append()");
 
 		p_widgets.addElement(w);
 		w.setDisplayable( this.getDisplayable() );
@@ -69,7 +69,7 @@ public class Panel extends Widget {
 	 * Inserts a new Widget in this Panel at the specified index.
 	 */
 	public void insert( Widget w, int index ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.insert()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.insert()");
 
 		p_widgets.insertElementAt(w, index);
 		w.setPanel( this ) ;
@@ -82,7 +82,7 @@ public class Panel extends Widget {
 	 * Removes the specified Widget from this Panel.
 	 */
 	public void remove( Widget w ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.remove()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.remove()");
 
 		p_widgets.removeElement(w);
 		w.setPanel( null );
@@ -95,7 +95,7 @@ public class Panel extends Widget {
 	 * Checks if the specified Widget is managed by this Panel.
 	 */
 	public boolean contains( Widget w ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.contains()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.contains()");
 
 		return p_widgets.contains(w);		
 	}
@@ -105,7 +105,7 @@ public class Panel extends Widget {
 	 * Gets the Widget with the specified index.
 	 */
 	public Widget getWidgetAt( int index ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.getWidgetAt()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.getWidgetAt()");
 
 		return (Widget)p_widgets.elementAt( index );
 	}
@@ -115,14 +115,14 @@ public class Panel extends Widget {
 	 * Gets the number of Widgets on this Panel.
 	 */
 	public int numWidgets() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.numWidgets()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.numWidgets()");
 
 		return p_widgets.size();
 	}
 
 	@Override
 	final public void draw( Graphics g ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.draw()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.draw()");
 
 		//paint widgets
 	    for (int i = p_widgets.size() - 1; i >= 0 ; i--) {
@@ -138,7 +138,7 @@ public class Panel extends Widget {
 	public void paint( Graphics g ) {
 		super.paint(g);
 		
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.paint()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.paint()");
 	}
 	
 	
@@ -149,7 +149,7 @@ public class Panel extends Widget {
 	 * to the CommandListener c. Otherwise, a dummy Command is generated.
 	 */
 	public void click(int x, int y, CommandListener cl, Displayable d) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.click()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.click()");
 
 		if (p_widgets.isEmpty()) return;
 
@@ -171,7 +171,7 @@ public class Panel extends Widget {
 	 * to the CommandListener c. Otherwise, a dummy Command is generated.
 	 */
 	public void triggerSelected(CommandListener cl, Displayable d) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.triggerSelected()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.triggerSelected()");
 
 		if (p_widgets.isEmpty()) return;
 
@@ -184,7 +184,7 @@ public class Panel extends Widget {
 
 	
 	public void setLayout(Layout l) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.setLayout()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.setLayout()");
 
 		p_layout = l;
 		
@@ -195,7 +195,7 @@ public class Panel extends Widget {
 	
 	
 	void doLayout() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.doLayout()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.doLayout()");
 
 	    if (p_layout != null) p_layout.layoutWidgets(p_widgets);
 		
@@ -208,7 +208,7 @@ public class Panel extends Widget {
 	 * might be invalid, so calling this would be nessesary.
 	 */
 	private void adjustDimensions() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.adjustDimensions()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.adjustDimensions()");
 
 	    int width 	= 0;
 	    int height 	= 0;
@@ -248,7 +248,7 @@ public class Panel extends Widget {
 
 	
 	public void selectNext() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.selectNext()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.selectNext()");
 
 		if (p_widgets.isEmpty()) return;
 		
@@ -262,7 +262,7 @@ public class Panel extends Widget {
 
 
 	public void selectPrevious() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.selectPrevious()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.selectPrevious()");
 
 		if (p_widgets.isEmpty()) return;
 
@@ -276,7 +276,7 @@ public class Panel extends Widget {
 
 
 	public void selectFirst() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Panel.selectFirst()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Panel.selectFirst()");
 
 		if (p_widgets.isEmpty()) return;
 

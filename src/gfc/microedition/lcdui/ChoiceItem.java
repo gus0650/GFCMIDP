@@ -56,7 +56,7 @@ class ChoiceItem extends Item implements WidgetSelectListener {
         
         setWidget(ci_panel);
 
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceItem()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("ChoiceItem()");
 	}
 	
 	
@@ -66,7 +66,7 @@ class ChoiceItem extends Item implements WidgetSelectListener {
 
 
 	void setChecked(boolean flag) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceItem.setChecked() " + flag);
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("ChoiceItem.setChecked() " + flag);
 		
 		if (flag) {
 			if (ci_type == Choice.EXCLUSIVE)	ci_text.setString(ON 		+" "+ 	ci_string);
@@ -80,7 +80,7 @@ class ChoiceItem extends Item implements WidgetSelectListener {
 	
 	
 	public void widgetStateChanged(Widget w) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceItem.widgetStateChanged()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("ChoiceItem.widgetStateChanged()");
 
 		if (w.isSelected()) ci_icon.setImage(ci_active);
 		else ci_icon.setImage(ci_inactive);

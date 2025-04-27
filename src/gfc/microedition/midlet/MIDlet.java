@@ -31,7 +31,23 @@ public abstract class MIDlet extends Frame {
 		display = new Display((Frame)this);
 		display.resize( getWidth(), getHeight() );
 		add(display);
-	} 
+
+		//go fullscreen
+		if (Boolean.parseBoolean(GetAppProperty("window.fullscreen"))) {
+			GraphicsDevice g = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+			if (g.isDisplayChangeSupported() && g.isFullScreenSupported()) {
+				System.out.println("going fullscreen");
+				DisplayMode dm = new DisplayMode(320, 200, 32, DisplayMode.BIT_DEPTH_MULTI|DisplayMode.REFRESH_RATE_UNKNOWN);
+				g.setDisplayMode(dm);
+				g.setFullScreenWindow(this);
+				setResizable(false);
+				setUndecorated(true);
+			}
+			else {
+				System.out.println("changing to fullscreen not supported on this device");
+			}
+		}
+	}	 
 
 	public static void main( String[] args ) {
 		//read properties from file

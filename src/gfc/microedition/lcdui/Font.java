@@ -1,7 +1,7 @@
 package gfc.microedition.lcdui;
 
-import gfc.microedition.midlet.*;
 import gfc.graphics.*;
+import gfc.microedition.midlet.*;
 
 
 /**
@@ -177,7 +177,7 @@ public class Font extends TiledImage {
 	
 	
 	public static Font getFont(int face, int style, int size) { 
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.err.println("WARNING in Font.substringWidth(): this method always returns default font" );
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.err.println("WARNING in Font.substringWidth(): this method always returns default font" );
 
 		return getDefaultFont();
 	}

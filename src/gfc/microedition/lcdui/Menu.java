@@ -28,7 +28,7 @@ public class Menu extends List implements CommandListener {
 	
 	
 	public void commandAction( Command cmd, Displayable d ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Menu.commandAction() " + cmd.getLabel());
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Menu.commandAction() " + cmd.getLabel());
 
 		display.setCurrent(m_parent);
 
@@ -47,7 +47,7 @@ public class Menu extends List implements CommandListener {
 	
 	
 	void add(Command c) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Menu.add() " + c.getLabel());
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Menu.add() " + c.getLabel());
 		
 		append(c.getLabel(), null);
 		

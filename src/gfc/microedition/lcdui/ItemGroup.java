@@ -24,12 +24,12 @@ class ItemGroup extends Item {
 
 		setWidget(ig_panel);
 		
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ItemGroup()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("ItemGroup()");
 	}
 	
 	
 	public int append( Item item ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ChoiceGroup.append()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("ChoiceGroup.append()");
 
 		ig_panel.append( item.getWidget() );
 

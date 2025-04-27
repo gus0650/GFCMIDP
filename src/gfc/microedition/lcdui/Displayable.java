@@ -1,7 +1,6 @@
 package gfc.microedition.lcdui;
 
 import gfc.microedition.midlet.*;
-import gfc.graphics.*;
 import gfc.widgets.*;
 import java.util.*;
 
@@ -26,7 +25,7 @@ public abstract class Displayable {
 
 //TODO who calls this?
 	void draw(Graphics g){
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.draw()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Displayable.draw()");
 
 		//make sure there is no translation
 		g.translate( -g.getTranslateX(), -g.getTranslateY() );
@@ -116,7 +115,7 @@ public abstract class Displayable {
 	}
 
 	public void setTitle(String s) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.setTitle()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Displayable.setTitle()");
 
 		if (s == null) {
 			title = null;
@@ -148,7 +147,7 @@ public abstract class Displayable {
 	}
 	
 	public void setTicker(Ticker ticker) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.setTicker()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Displayable.setTicker()");
 
 		if (ticker != null) ticker.stop();
 		
@@ -165,7 +164,7 @@ public abstract class Displayable {
 	CommandListener d_command_listener;
 
 	public void addCommand(Command cmd) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.addCommand() " + cmd.getLabel());
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Displayable.addCommand() " + cmd.getLabel());
 
 		final byte 
 			SIDE_LEFT 	= 0,
@@ -242,13 +241,13 @@ public abstract class Displayable {
 	}
 
 	public void removeCommand(Command cmd) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.removeCommand()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Displayable.removeCommand()");
 
 		d_commands.removeElement(cmd);
 	}
 
 	public void setCommandListener(CommandListener cl) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Displayable.()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Displayable.()");
 
 		d_command_listener = cl;
 	}

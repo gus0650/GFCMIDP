@@ -22,7 +22,7 @@ public class TextBox extends Screen {
 		
 		setContent(tb_textfield);
 		
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("TextBox()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("TextBox()");
 	}
 	
 	public String getString() {
@@ -30,7 +30,7 @@ public class TextBox extends Screen {
 	}
 
 	public void setString(String s) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("TextBox.setString()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("TextBox.setString()");
 
 		tb_textfield.setString(s);
 		

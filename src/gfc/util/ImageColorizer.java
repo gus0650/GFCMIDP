@@ -277,7 +277,7 @@ public class ImageColorizer {
 	 * @return Image - image of current state
 	 */
 	public final Image currentImage() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ImageColorizer.currentImage()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("ImageColorizer.currentImage()");
 		
 		return Image.createImage( png_data, 0, png_data.length );
 	}
@@ -317,7 +317,7 @@ public class ImageColorizer {
 	 * @param filename - name of the image resource
 	 */
 	public final void loadSource( String filename ) {		
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ImageColorizer.loadSource(): " + filename );
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("ImageColorizer.loadSource(): " + filename );
 		
 		try {
 			InputStream is = getClass().getResourceAsStream( filename );
@@ -342,7 +342,7 @@ public class ImageColorizer {
 	 * @param size - final size of the resource in <code>is<code>
 	 */
 	private final void loadSourceFromStream( InputStream is, int size ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ImageColorizer.loadSourceFromStream() " + size);
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("ImageColorizer.loadSourceFromStream() " + size);
 		
 		try {
 			
@@ -547,7 +547,7 @@ public class ImageColorizer {
 	 * @return Image - resulting image after palette change
 	 */
 	public final void loadPaletteFromPLTEFile( String filename ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ImageColorizer.loadPaletteFromPLTEFile() " + filename);
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("ImageColorizer.loadPaletteFromPLTEFile() " + filename);
 		
 		try {
 			InputStream is = getClass().getResourceAsStream( filename );
@@ -571,7 +571,7 @@ public class ImageColorizer {
 	 * @param filename resource name of image file
 	 */
 	public final void loadPaletteFromPNGFile( String filename ) {		
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("ImageColorizer.loadPaletteFromPNGFile() " + filename);
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("ImageColorizer.loadPaletteFromPNGFile() " + filename);
 
 		try {
 			InputStream is = getClass().getResourceAsStream( filename );

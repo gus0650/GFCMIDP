@@ -16,7 +16,7 @@ public class TiledImage {
 	protected int tile_height, tile_width, tiles_horiz, tiles_vert, tiles;
 
 	public TiledImage(Image image, int width, int height) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("TiledImage()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("TiledImage()");
 
 		this.image = image;
 
@@ -74,7 +74,7 @@ public class TiledImage {
 	}
 
 	public Image getTileImage(int tile) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("TiledImage.getTileImage() " + tile);
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("TiledImage.getTileImage() " + tile);
 		
 		if (tile > tiles) System.err.println("ERROR in TiledImage.getTileImage(): tile ID out of range -- " + tile);
 		

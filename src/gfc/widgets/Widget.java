@@ -53,14 +53,14 @@ abstract public class Widget {
 		this.y = y;
 		this.displayable = displayable;
 
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget()");
 	}
 	
 	
     public Widget(int width, int height, Displayable displayable) {
         this(width, height, 0, 0, displayable);
         
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget()");
     }
 
     
@@ -71,7 +71,7 @@ abstract public class Widget {
 	 * Paint this Widget.
 	 */
 	public void paint(Graphics g) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.paint()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.paint()");
 
 		//store clip
 		int clip_x  	= g.getClipX();
@@ -124,7 +124,7 @@ abstract public class Widget {
 
 
 	final public void setAlignment( int flags ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setAlignment()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setAlignment()");
 
 		alignment	= flags;
 
@@ -139,7 +139,7 @@ abstract public class Widget {
 
 	
 	final public void setBorderProperties( int hMargin, int vMargin, Color activeColor, Color inactiveColor ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setBorderProperties()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setBorderProperties()");
 
 		border_horz 	= hMargin;
 		border_vert 	= vMargin;
@@ -168,7 +168,7 @@ abstract public class Widget {
 	 * @param backgroundColor - background color. If it is null, the background is transparent
 	 */
 	final public void setBGColor( Color backgroundColor ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setBGColor()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setBGColor()");
 
 		bg_color 		= backgroundColor;
 		repaint();
@@ -181,7 +181,7 @@ abstract public class Widget {
 	
 	
 	final public void setBGImage( Image img ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setBGImage()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setBGImage()");
 
 		bg_image 		= img;
 		repaint();
@@ -194,7 +194,7 @@ abstract public class Widget {
 
 	
 	public void setSelected(boolean flag) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setSelected()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setSelected()");
 
 		if (!isSelectable()) return;
 
@@ -217,14 +217,14 @@ abstract public class Widget {
 
 	
 	public void setWidgetSelectListener(WidgetSelectListener listener) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setWidgetSelectListener()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setWidgetSelectListener()");
 
 		wsl = listener;
 	}
 
 	
 	protected void setSelectable(boolean flag) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setSelectable()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setSelectable()");
 
 		selectable = flag;
 	}
@@ -236,7 +236,7 @@ abstract public class Widget {
 
 	
 	public void setEnabled(boolean flag) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setEnabled()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setEnabled()");
 
 		enabled = flag;
 	}
@@ -253,7 +253,7 @@ abstract public class Widget {
 
 
 	final public void setVisible(boolean flag) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setVisible()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setVisible()");
 
 		if( flag == visible ) return;
 	
@@ -269,14 +269,14 @@ abstract public class Widget {
 	
 	
 	void setPanel( Panel panel ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setPanel()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setPanel()");
 
 		this.panel = panel;
 	}
 
 	
 	public void setDisplayable(Displayable d) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setDisplayable()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setDisplayable()");
 
 		displayable = d;
 	}
@@ -288,7 +288,7 @@ abstract public class Widget {
 
 	
 	public void setCommand(Command c) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setCommand()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setCommand()");
 
 		command = c;
 	}
@@ -300,7 +300,7 @@ abstract public class Widget {
 	
 
 	public void triggerCommand(CommandListener cl, Displayable d) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.triggerCommand()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.triggerCommand()");
 
 		cl.commandAction(command, d);
 	}
@@ -363,14 +363,14 @@ abstract public class Widget {
 
 
 	final public void move(int dx, int dy) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.move()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.move()");
 
 		setPosition( x + dx, y + dy );
 	}
 
 	
 	public void setX(int x) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setX()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setX()");
 
 		this.x 	= x;
 		repaint();
@@ -378,7 +378,7 @@ abstract public class Widget {
 
 	
 	public void setY(int y) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setY()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setY()");
 
 		this.y 	= y;
 		repaint();
@@ -391,7 +391,7 @@ abstract public class Widget {
 	 * @param y - y coordinate
 	 */
 	final public void setPosition( int x, int y ) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setPosition()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setPosition()");
 
 		this.x 	= x;
 		this.y 	= y;
@@ -400,7 +400,7 @@ abstract public class Widget {
 	
 
 	public void setContentWidth(int w) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setContentWidth()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setContentWidth()");
 
         width = w;
         
@@ -410,7 +410,7 @@ abstract public class Widget {
 
 	
 	public void setContentHeight(int h) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setContentHeight()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setContentHeight()");
 
 		height = h;
 		
@@ -443,7 +443,7 @@ abstract public class Widget {
 	 * (this method processes faster than setting width & height separately)
 	 */
     public void setDimensions(int w, int h) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setDimensions()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setDimensions()");
 
         width 	= w;
         height 	= h;
@@ -454,7 +454,7 @@ abstract public class Widget {
     
 	
 	public void setBounds(int x, int y, int width, int height) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.setBounds()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.setBounds()");
 
 		this.x = x;
 		this.y = y;
@@ -553,7 +553,7 @@ abstract public class Widget {
      * Subclasses may override to respond to such an event.
      */
     protected void notifyDeselected() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.notifyDeselected()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.notifyDeselected()");
     }
     
     /**
@@ -562,6 +562,6 @@ abstract public class Widget {
      * Subclasses may override to respond to such an event.
      */
     protected void notifySelected() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Widget.notifySelected()");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Widget.notifySelected()");
     }
 }

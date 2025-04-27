@@ -31,7 +31,7 @@ public class Sphere implements Animation {
 
 
 	public void toFirstFrame() {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.err.println("WARNING Sphere.toFirstFrame(): Method not implemented");
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.err.println("WARNING Sphere.toFirstFrame(): Method not implemented");
 		
 		//TODO: remember setting & restore now
 	}

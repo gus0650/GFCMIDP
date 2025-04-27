@@ -35,7 +35,7 @@ abstract class Gauge extends Widget {
 	
 	
 	public void setValue(int v) {
-		if (MIDlet.GetAppProperty("debug").equals("true")) System.out.println("Gauge.setValue() " +v);
+		if (Boolean.parseBoolean(MIDlet.GetAppProperty("debug"))) System.out.println("Gauge.setValue() " +v);
 		
 		value = v;
 		
