@@ -5,6 +5,7 @@ import javax.imageio.*;
 import javax.swing.*;
 
 //this program tries to go into fullscreen and NOT do anti aliasing/interpolation which makes the image look blurry
+//https://docs.oracle.com/javase/8/docs/api/java/awt/RenderingHints.html#VALUE_ANTIALIAS_OFF
 
 public class TestFullscreen extends JPanel {
 
