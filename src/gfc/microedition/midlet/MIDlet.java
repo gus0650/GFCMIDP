@@ -5,10 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.*;
-import javax.swing.JFrame;
 
-
-public abstract class MIDlet extends JFrame {
+public abstract class MIDlet extends Frame {
 
 	Display display;
 	static Properties properties = new Properties();

@@ -17,11 +17,13 @@ and you're ready to recompile.
 You then need to configure the app.properties file with the specific parameters for your MIDlet,
 and now you are ready to run.
 
-The wrapper re-implements most classes found in MIDP. The implementation is not complete, but should be sufficient for most games.
+The wrapper re-implements most classes found in MIDP. The implementation is not 100% complete, but should be sufficient for most games.
 
 The Font class uses bitmap fonts.
 
 Fullscreen mode is supported.
+
+Gamepad controls will be supported (but are not yet).
 
 Alt-F4 closes the window.
 
