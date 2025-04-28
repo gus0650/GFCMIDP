@@ -11,7 +11,12 @@ inputs from keyboard and mouse are not processed
    TextBox
    ...
 
-add gamepad support
+add gamepad support!
+	game controller maps very well to nokia handset:
+	dpad -> numberpad or joystick
+	A, B -> Confirm, Cancel buttons
+	L1, R1 -> open the onscreen menus which are part of Screen anyway
+
 
 issue: everything is very blurry in fullscreen mode
   perhaps Graphic2D can somehow help
