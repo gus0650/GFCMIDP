@@ -21,7 +21,9 @@ The wrapper re-implements most classes found in MIDP. The implementation is not 
 
 The Font class uses bitmap fonts.
 
-Fullscreen mode is theoretically supported (through AWT), although does not work on most modern PCs.
+Fullscreen mode is supported.
+
+Alt-F4 closes the window.
 
 This code was written in Visual Studio Code with the Oracle Java extension.
 Load "TestMIDlet" and it should run out of the box. (F5)

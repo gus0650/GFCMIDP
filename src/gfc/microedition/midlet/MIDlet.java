@@ -5,9 +5,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.*;
+import javax.swing.JFrame;
 
 
-public abstract class MIDlet extends Frame {
+public abstract class MIDlet extends JFrame {
 
 	Display display;
 	static Properties properties = new Properties();
@@ -49,10 +50,15 @@ public abstract class MIDlet extends Frame {
 
 			if (g.isDisplayChangeSupported()) {
 				System.out.println("changing display");
+
+				for (DisplayMode d : g.getDisplayModes()) {
+					System.out.println(d);
+				}
+
 				DisplayMode dm = new DisplayMode(
 					Integer.parseInt(properties.getProperty("window.width")), 
 					Integer.parseInt(properties.getProperty("window.height")), 
-					DisplayMode.BIT_DEPTH_MULTI, 
+					Integer.parseInt(properties.getProperty("window.depth")),
 					DisplayMode.REFRESH_RATE_UNKNOWN );
 				g.setDisplayMode(dm);
 			}
